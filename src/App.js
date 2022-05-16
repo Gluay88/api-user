@@ -1,31 +1,44 @@
-import React, { useState } from "react";
-import axios from "axios";
-import {Images} from "./components/Images";
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
-  const [images, setImages] = useState([]);
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+    };
+  }
 
-  const fetchAPI = async () => {
-    const response = await axios.get(
-      "https://api.unsplash.com/photos/?client_id=7DEpDeiDKdZRli0RhIerGd5qJLyKaDb7TE_h0v7BsQg"
-    );
-    console.log(response.data);
-    const data = await response.data;
-    setImages(data);
-  };
-  return (
-    <div className="container">
-      <br></br>
-      <button className="btn btn-primary btn-md" onClick={fetchAPI}>
-        Get Photo from API
-      </button>
-      <div className="photos">
-        {images.length > 0 && <Images images={images} />}
+  componentDidMount() {
+    let url = "https://jsonplaceholder.typicode.com/todos";
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }).then((result) => {
+      result.json().then((resp) => {
+        this.setState({ data: resp });
+      });
+    });
+  }
+  render() {
+    const data = this.state.data;
+    console.warn(data);
+    return (
+      <div className="App">
+        <h3>Class Fetch API </h3>
+        {data.map((item) => (
+          <div>
+            <p>Id: {item.id} User: {item.userId}</p>
+            <p>Title: {item.title}</p>
+            <br></br>
+          </div>
+        ))}
       </div>
-      <br></br>
-      <p style={{textAlign:'center'}}>Copyright &copy; 2022 | Gluay S. Wang</p>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
