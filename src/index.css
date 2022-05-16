@@ -24,9 +24,7 @@
 
 .photos .photo {
   margin: 1rem;
-  width: 300px;
-  height: auto;
-  object-fit: cover;
+  width: 400px;
 }
 
 .photos .photo img {
