@@ -7,7 +7,7 @@ function App() {
 
   const fetchAPI = async () => {
     const response = await axios.get(
-      "https://api.unsplash.com/photos/?client_id=7DEpDeiDKdZRli0RhIerGd5qJLyKaDb7TE_h0v7BsQg"
+      "https://api.unsplash.com/photos/?client_id=dCMltc8sOE92zKag0-mWW36616HW87DDZMiD-mHRNRg"
     );
     console.log(response.data);
     const data = await response.data;
