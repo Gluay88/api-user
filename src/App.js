@@ -10,7 +10,6 @@ function App() {
 }, []);
 
 const loadData = async () => {
-  
   await fetch(API_URL)
   .then(response => response.json())
   .then(receiveData => setData(receiveData))
@@ -22,7 +21,7 @@ console.log(data);
       {data.map(photo => (
         <div key={photo.id} style={{marginBottom:'5rem'}}>
           <p>Photo Title: {photo.title}</p>
-          <p>Photo URL: <a href={photo.url} target="_blank">Actual image</a></p>
+          <p>Photo URL: <a href={photo.url} target="_blank" rel="noreferrer">Actual image</a></p>
           <img src={photo.url} alt="" />
         </div>
       ))}
